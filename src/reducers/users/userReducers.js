@@ -2,7 +2,7 @@ const INITIAL_STATE = {
   users: [],
 };
 
-const userActions = (state = INITIAL_STATE, action) => {
+const userReducers = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case "getUsers":
       return { ...state, users: action.payload };
@@ -12,4 +12,4 @@ const userActions = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default userActions;
+export default userReducers;

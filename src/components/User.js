@@ -1,24 +1,15 @@
-// import axios from "axios";
 import React, { Component } from "react";
 import UserTable from "../container/UserTable";
-import { getUsers } from "../services/http/getUsers";
-
+import { connect } from "react-redux";
+import * as userActions from "../actions/userActions";
 
 class User extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      users: [],
-    };
-  }
-
-  async componentDidMount() {
-    const getUsersAxios = await getUsers();
-    const { data } = getUsersAxios;
-    this.setState({ users: data });
+  componentDidMount() {
+    this.props.userActions();
   }
 
   render() {
+    console.log(this.props);
     return (
       <div className="margen">
         <h1>Users</h1>
@@ -32,7 +23,7 @@ class User extends Component {
           </thead>
 
           <tbody>
-            <UserTable users={this.state.users} />
+            <UserTable users={this.props.users} />
           </tbody>
         </table>
       </div>
@@ -40,4 +31,8 @@ class User extends Component {
   }
 }
 
-export default User;
+const mapStateToProps = (reducers) => {
+  return reducers.userReducers;
+};
+
+export default connect(mapStateToProps, userActions)(User);
