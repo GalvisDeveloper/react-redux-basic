@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  width: 100%;
 }
 
 code {
@@ -12,17 +13,17 @@ code {
     monospace;
 }
 
-.margen {
-  margin: 100px;
-  width: 100%;
+.margin {
+  margin: 50px;
+  width: auto;
 }
 
-.tabla {
+.table {
   width: 100%;
   text-align: left;
 }
 
-.tabla td {
+.table td {
   padding: 10px 0 10px 0;
 }
 
@@ -39,3 +40,10 @@ code {
   margin-right: 10px;
   padding-right: 10px;
 }
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+

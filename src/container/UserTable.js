@@ -8,7 +8,7 @@ const UserTable = ({ users }) => {
           <td>{usr.name}</td>
           <td>{usr.email}</td>
           <td>
-            <a href={usr.website}>{usr.website}</a>
+            <a href={"www." + usr.website + ".com"}>{usr.website}</a>
           </td>
         </tr>
       ))}

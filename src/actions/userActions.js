@@ -1,12 +1,27 @@
 import { getUsers } from "../services/http/getUsers";
+import { GET_ALL, LOADING, ERROR, HIDE_LOADING } from "../types/userTypes";
 
-export const userActions = () => async (dispatch) => {
-  const getUsersAxios = await getUsers();
-  const { data } = getUsersAxios;
+export const userGetAll = () => async (dispatch) => {
   dispatch({
-    type: "getUsers",
-    payload: data,
+    type: LOADING,
   });
-};
+  try {
+    const getUsersAxios = await getUsers();
+    const { data } = getUsersAxios;
 
-// export default userActions;
+    dispatch({
+      type: GET_ALL,
+      payload: data,
+    });
+  } catch (error) {
+    console.log("Error: " + error.message);
+    dispatch({
+      type: ERROR,
+      payload: error.message,
+    });
+  } finally {
+    dispatch({
+      type: HIDE_LOADING,
+    });
+  }
+};
